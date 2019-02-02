@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Manas173/JavaScriptBackendWebApp/issues"
   },
-  "homepage": "https://github.com/Manas173/JavaScriptBackendWebApp#readme"
+  "homepage": "https://github.com/Manas173/JavaScriptBackendWebApp#readme",
+  "dependencies": {
+    "yargs": "^12.0.5"
+  }
 }
