@@ -25,12 +25,16 @@ request({
 	json:true
 	},(error,response,body)=>{
 	console.log('Error: ',error);
+	console.log('Response: ',JSON.stringify(response,undefined,2));
 	console.log('Body is: ',body);
 })
 
-var decURI="Hey there I am using Kali";
+var decURI="Hey ther 20e%20I am using Kali";
 var encURI=encodeURIComponent(decURI);
+decURI=decodeURIComponent("Hey there%20I%20am%20Manas");
 console.log(encURI);
+console.log(decodeURIComponent(encURI));
+console.log(decURI);
 if(command==='addNote')
 	feedback=notes.readNote(argv);
 else if(command==='deleteNote')
