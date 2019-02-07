@@ -6,6 +6,7 @@ var notes=require('./notes.js');
 var feedback='Unable to access , command fault !!!';
 const command=process.argv[2];
 const request=require('request');
+var handleName="tourist";
 const argv=yargs.
 	command('addNote','Add a newnote',{
 		title: {
@@ -19,7 +20,13 @@ const argv=yargs.
 	}).help().alias('help','h').argv;
 debugger;
 
-//Request to be done later
+request({
+	url:`https://codeforces.com/api/user.info?handles=${handleName}`,
+	json:true
+	},(error,response,body)=>{
+	console.log('Error: ',error);
+	console.log('Body is: ',body);
+})
 
 var decURI="Hey there I am using Kali";
 var encURI=encodeURIComponent(decURI);
