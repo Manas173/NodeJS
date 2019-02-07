@@ -6,7 +6,7 @@ var notes=require('./notes.js');
 var feedback='Unable to access , command fault !!!';
 const command=process.argv[2];
 const request=require('request');
-var handleName="tourist";
+var address="Koregaon Park,Pune,Maharastra,India";
 const argv=yargs.
 	command('addNote','Add a newnote',{
 		title: {
@@ -19,22 +19,27 @@ const argv=yargs.
 		}
 	}).help().alias('help','h').argv;
 debugger;
-
+var handle=encodeURIComponent(address);
+//console.log(handle);
 request({
-	url:`https://codeforces.com/api/user.info?handles=${handleName}`,
+	url:`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${handle}&key=AIzaSyDMYuu1EyK9oYhjdlnGbSW_iPrh-LRh264`,
 	json:true
 	},(error,response,body)=>{
-	console.log('Error: ',error);
-	console.log('Response: ',JSON.stringify(response,undefined,2));
-	console.log('Body is: ',body);
+	if(body.results!=undefined)
+	{
+		console.log(body.results[0].geometry.location.lat);
+		console.log(body.results[0].geometry.location.lng);
+	}
+	else
+		console.log(body);
 })
 
-var decURI="Hey ther 20e%20I am using Kali";
-var encURI=encodeURIComponent(decURI);
-decURI=decodeURIComponent("Hey there%20I%20am%20Manas");
-console.log(encURI);
-console.log(decodeURIComponent(encURI));
-console.log(decURI);
+//var decURI="Hey ther 20e%20I am using Kali";
+//var encURI=encodeURIComponent(decURI);
+//decURI=decodeURIComponent("Hey there%20I%20am%20Manas");
+//console.log(encURI);
+//console.log(decodeURIComponent(encURI));
+//console.log(decURI);
 if(command==='addNote')
 	feedback=notes.readNote(argv);
 else if(command==='deleteNote')
