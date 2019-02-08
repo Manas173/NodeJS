@@ -34,13 +34,15 @@ request({
 	url:`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${handle}&key=AIzaSyDMYuu1EyK9oYhjdlnGbSW_iPrh-LRh264`,
 	json:true
 	},(error,response,body)=>{
-	if(body.results!=undefined)
+	if(error)
+		console.log("ERROR OCCURED");
+	else if(body.status==="ZERO_RESULTS")
+		console.log("NO RESULTS FOR THE INPUT");
+	else if(body.status==="OK")
 	{
 		console.log(body.results[0].geometry.location.lat);
 		console.log(body.results[0].geometry.location.lng);
 	}
-	else
-		console.log(body);
 })
 
 //var decURI="Hey ther 20e%20I am using Kali";
