@@ -6,20 +6,29 @@ var notes=require('./notes.js');
 var feedback='Unable to access , command fault !!!';
 const command=process.argv[2];
 const request=require('request');
-var address="Koregaon Park,Pune,Maharastra,India";
-const argv=yargs.
-	command('addNote','Add a newnote',{
-		title: {
-			describe:'The title of the user',
-			demand:true
-		},
-		body: {
-			describe:'The body for each title',
-			demand: true
-		}
-	}).help().alias('help','h').argv;
+const argv=yargs.options({
+	address:{
+		demand:true,
+		string:true
+	}
+	})
+	.help()
+	.alias('help','h')
+	.alias('address','a')
+	.argv;
+//const argv=yargs.
+//	command('addNote','Add a newnote',{
+//		title: {
+//			describe:'The title of the user',
+//			demand:true
+//		},
+//		body: {
+//			describe:'The body for each title',
+//			demand: true
+//		}
+//	}).help().alias('help','h').argv;
 debugger;
-var handle=encodeURIComponent(address);
+var handle=encodeURIComponent(argv.a);
 //console.log(handle);
 request({
 	url:`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${handle}&key=AIzaSyDMYuu1EyK9oYhjdlnGbSW_iPrh-LRh264`,
