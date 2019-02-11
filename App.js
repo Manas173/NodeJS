@@ -2,9 +2,10 @@ var os=require('os');
 var yargs=require('yargs');
 var fs=require('fs');
 var geocode=require('./geocode/geocode');
-//var _=require('lodash');
-// // var notes=require('./notes.js');
-// var feedback='Unable to access , command fault !!!';
+var weather=require('./weather/weather');
+var _=require('lodash');
+// var notes=require('./notes.js');
+var feedback='Unable to access , command fault !!!';
 const argv=yargs.options({
 						a:{
 							demand:true,
@@ -17,9 +18,17 @@ const argv=yargs.options({
 					.argv;
 geocode.geocodeInput(argv.address,(errorMessage,result)=>{
 	if(errorMessage)
-		console.log(errorMessage);
+		console.log('Unable to fetch latitude and longitude !');
 	else
-		console.log(result);
+		{
+			var obj=JSON.parse(result);
+			weather.getTemperature(obj.lat,obj.lng,(errorMessage,weatherResult)=>{
+				if(errorMessage)
+					console.log('Unable to fetch temperature !');
+				else
+					console.log(weatherResult);
+			})
+		}
 });
 //const argv=yargs.
 //	command('addNote','Add a newnote',{
