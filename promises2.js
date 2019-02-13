@@ -7,7 +7,7 @@ var geocodeAddress = (address) => {
 			json:true
 		},
 		(error,response,body)=>{
-			if(response.statusCode!==200 || body.status==='ZERO_RESULTS' || body.results===null)
+			if(response.statusCode!==200 || body.status==='ZERO_RESULTS')
 				reject('The address has not been found !!!');
 			else
 				resolve({
