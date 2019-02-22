@@ -1,5 +1,5 @@
-var {mongoose} = require('../mongoose.js');
-var Users = mongoose.model('Users',{
+var mongoose = require('mongoose');
+var Users = mongoose.model('users',{
 	email:{
 		required:true,
 		minLength:1,

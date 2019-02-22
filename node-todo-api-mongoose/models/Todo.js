@@ -1,4 +1,4 @@
-var {mongoose} = require('../mongoose.js');
+var mongoose = require('mongoose');
 var Todo = mongoose.model('Todo',{
 	text:{
 		required: true,
@@ -10,7 +10,7 @@ var Todo = mongoose.model('Todo',{
 		type: Boolean,
 		default: false
 	}
-})
+});
 
 module.exports = {
 	Todo
