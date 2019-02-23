@@ -19,6 +19,14 @@ app.post('/todo',(req,res)=>{
 	})
 })
 
+app.get('/todo',(req,res)=>{
+	Todo.find().then((response)=>{
+		res.send({response});
+	},(err)=>{
+		res.status(400).send({err});
+	})
+})
+
 app.post('/user',(req,res)=>{
 	var obj = new Users({
 		email: req.body.email,
