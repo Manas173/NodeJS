@@ -61,6 +61,19 @@ app.post('/user',(req,res)=>{
 	})
 })
 
+app.delete('/todos/:id',(req,res)=>{
+	var id = req.params.id;
+	if(!ObjectId.isValid(id))
+		return res.status(400).send({'message':'Invalid ID'});
+	Todo.findByIdAndRemove(id).then((response)=>{
+		if(!response)
+			return res.status(404).send({'message':'ID not found !'})
+		res.status(200).send(response);
+	}).catch((e)=>{
+		res.status(400).send({'message':'Error occured !'});
+	})
+})
+
 app.listen(3000,()=>{
 	console.log(`Server connected to port 3000`);
 })
