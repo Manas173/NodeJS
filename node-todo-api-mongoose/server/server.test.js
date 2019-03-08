@@ -105,3 +105,37 @@ describe('GET /todos/:id',()=>{
 	})
 
 })
+
+describe('Testing delete route',(req,res)=>{
+
+	it('DELETE /todos/',(done)=>{
+		var hexId = todos[1]._id.toHexString();
+		request(app)
+			.delete(`/todos/${hexId}`)
+			.expect(200)
+			.expect((res)=>{
+				expect(res.body.response._id).toBe(hexId);
+			})
+			.end((err,res)=>{
+				if(err)
+					return done(err);
+				Todo.findById(hexId).then((response)=>{
+					expect(response).toNotExist();
+					done();
+				}).catch((err)=>{
+					done(err);
+				})
+			})
+	})
+
+	it('id not found',(done)=>{
+		var hexId = new ObjectId().toHexString();
+		request(app)
+			.delete(`/todos/${hexId}`)
+			.expect(404)
+			.expect((res)=>{
+				console.log(res.body);
+			})
+			.end(done);
+	})
+})
