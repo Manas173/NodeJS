@@ -23,13 +23,21 @@ app.post('/todo',(req,res)=>{
 app.get('/todos/:id',(req,res)=>{
 	var id = req.params.id;
 	if(!ObjectId.isValid(id))
-		return res.status(404).send({'error':'ID invalid'})
+		return res.status(404).send()
 	Todo.findById(id).then((response)=>{
 		if(!response)
-			return res.status(400).send({'error' : 'ID not found!'})
-		res.status(200).send(response);
+			return res.status(400).send('Not found')
+		res.status(200).send({response});
 	}).catch((e)=>{
-		res.send('Error has occured !')
+		res.status(404).send('Not valid')
+	})
+})
+
+app.get('/todos',(req,res)=>{
+	Todo.find().then((response)=>{
+		res.send({response});
+	},(err)=>{
+		res.status(400).send({err});
 	})
 })
 

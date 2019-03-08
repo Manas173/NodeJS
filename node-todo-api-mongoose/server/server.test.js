@@ -2,9 +2,20 @@ const request = require('supertest');
 const expect = require('expect');
 var {app} = require('./server.js');
 var {Todo} = require('../models/Todo.js')
+var {ObjectId} = require('mongodb'); 
+
+var todos = [{
+	_id: new ObjectId(),
+	text: 'This is one test'
+},{
+	_id: new ObjectId(),
+	text: 'This is a test 123'
+}]
 
 beforeEach((done)=>{
-	Todo.remove({}).then(()=> done());
+	Todo.remove({}).then(()=>{
+		return Todo.insertMany(todos);
+	}).then(()=> done());
 });
 
 describe('POST /todo',()=>{
@@ -21,8 +32,8 @@ describe('POST /todo',()=>{
 			.end((err,response)=>{
 				if(err)
 					return console.log(err);
-				Todo.find().then((res)=>{
-				expect(res.length).toBe(1);
+				Todo.find({text}).then((res)=>{
+				expect(res.length).toBe(2);
 				expect(res[0].text).toBe(text);
 				done();
 				}).catch((err)=>{
@@ -40,7 +51,7 @@ describe('POST /todo',()=>{
 				if(err)
 					return console.log(err);
 				Todo.find().then((res)=>{
-					expect(res.length).toBe(0);
+					expect(res.length).toBe(2);
 					done();
 				},(e)=>{
 					done(e);
@@ -48,3 +59,49 @@ describe('POST /todo',()=>{
 			})
 	})
 });
+
+
+describe('GET /todos',()=>{
+	it('should get all todos',(done)=>{
+		request(app)
+			.get('/todos')
+			.expect(200)
+			.expect((res)=>{
+				expect(res.body.response.length).toBe(2);
+			})
+			.end(done);
+	})
+})
+
+describe('GET /todos/:id',()=>{
+	it('Finding in todo',(done)=>{
+		request(app)
+			.get(`/todos/${todos[0]._id.toHexString()}`)
+			.expect(200)
+			.expect((res)=>{
+				expect(res.body.response.text).toBe(todos[0].text)
+			})
+			.end(done);
+	})
+
+	it('id not found',(done)=>{
+		request(app)
+			.get('/todos/5c70f701515c55da6a242920')
+			.expect((res)=>{
+				console.log(res.body);
+			})
+			.expect(400)
+			.end(done);
+	})
+
+	it('id not valid',(done)=>{
+		request(app)
+			.get('/todos/5c70f701515c55da6a24292811')
+			.expect(404)
+			.expect((res)=>{
+				console.log(res.body);
+			})
+			.end(done);
+	})
+
+})
