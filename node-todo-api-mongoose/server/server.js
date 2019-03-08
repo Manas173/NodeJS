@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var {Todo} = require('../models/Todo.js');
 var {Users} = require('../models/Users.js');
+var {ObjectId} = require('mongodb');
 
 var app = express();
 
@@ -16,6 +17,19 @@ app.post('/todo',(req,res)=>{
 		res.send(response);
 	},(err)=>{
 		res.status(400).send('Error while posting');
+	})
+})
+
+app.get('/todos/:id',(req,res)=>{
+	var id = req.params.id;
+	if(!ObjectId.isValid(id))
+		return res.status(404).send({'error':'ID invalid'})
+	Todo.findById(id).then((response)=>{
+		if(!response)
+			return res.status(400).send({'error' : 'ID not found!'})
+		res.status(200).send(response);
+	}).catch((e)=>{
+		res.send('Error has occured !')
 	})
 })
 
