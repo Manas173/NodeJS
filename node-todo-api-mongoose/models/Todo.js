@@ -15,7 +15,6 @@ var Todo = mongoose.model('Todo',{
 		default: null
 	}
 });
-console.log(Todo.find())
 module.exports = {
 	Todo
 }

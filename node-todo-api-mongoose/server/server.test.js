@@ -89,9 +89,6 @@ describe('GET /todos/:id',()=>{
 	it('id not found',(done)=>{
 		request(app)
 			.get('/todos/5c70f701515c55da6a242920')
-			.expect((res)=>{
-				console.log(res.body);
-			})
 			.expect(400)
 			.end(done);
 	})
@@ -100,9 +97,6 @@ describe('GET /todos/:id',()=>{
 		request(app)
 			.get('/todos/5c70f701515c55da6a24292811')
 			.expect(404)
-			.expect((res)=>{
-				console.log(res.body);
-			})
 			.end(done);
 	})
 
@@ -135,9 +129,6 @@ describe('Testing delete route',(req,res)=>{
 		request(app)
 			.delete(`/todos/${hexId}`)
 			.expect(404)
-			.expect((res)=>{
-				console.log(res.body);
-			})
 			.end(done);
 	})
 })

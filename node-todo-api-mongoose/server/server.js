@@ -1,3 +1,7 @@
+require('./../config/config');
+
+const port = process.env.PORT;
+
 var {mongoose} = require('../mongoose.js');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -100,7 +104,7 @@ app.patch('/todos/:id',(req,res)=>{
 		})
 })
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
 	console.log(`Server connected to port 3000`);
 })
 

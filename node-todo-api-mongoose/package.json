@@ -4,9 +4,13 @@
   "description": "",
   "main": "mongoose.js",
   "scripts": {
-    "test": "mocha **/*.test.js",
+    "start" : "node server/server.js",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha **/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
   },
+  "engines":{
+      "node": "6.2.2"
+    },
   "author": "Manas Ranjan Swain",
   "license": "ISC",
   "devDependencies": {
