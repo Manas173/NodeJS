@@ -94,9 +94,9 @@ app.patch('/todos/:id',(req,res)=>{
 		then((response)=>{
 			if(!response)
 				return res.status(404).send();
-			res.status(200).send({todo});
+			res.send({response});
 		}).catch((e)=>{
-			res.status(404).send(e);
+			res.status(400).send(e);
 		})
 })
 

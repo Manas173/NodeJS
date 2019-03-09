@@ -9,7 +9,9 @@ var todos = [{
 	text: 'This is one test'
 },{
 	_id: new ObjectId(),
-	text: 'This is a test 123'
+	text: 'This is a test 123',
+	completed : true,
+	completedAt: null
 }]
 
 beforeEach((done)=>{
@@ -137,5 +139,46 @@ describe('Testing delete route',(req,res)=>{
 				console.log(res.body);
 			})
 			.end(done);
+	})
+})
+
+describe('Testing PATCH /todos',()=>{
+	console.log(todos[1]._id);
+	it('Testing first /todos update',(done)=>{
+		request(app)
+			.patch(`/todos/${todos[0]._id}`)
+			.send({
+				text: 'This is a test update',
+				completed : true
+			})
+			.expect(200)
+			.expect((res)=>{
+				expect(res.body.response.text).toBe('This is a test update');
+			})
+			.end((err,res)=>{
+				if(err)
+					return done(err);
+				done();
+			})
+
+	})
+
+	it('Testing second /todos update',(done)=>{
+		request(app)
+			.patch(`/todos/${todos[1]._id}`)
+			.send({
+				text: 'This is second test update',
+				completed: false
+			})
+			.expect(200)
+			.expect((res)=>{
+				expect(res.body.response.completed).toBe(false);
+				expect(res.body.response.completedAt).toBe(null);
+			})
+			.end((err,res)=>{
+				if(err)
+					return done(err);
+				done();
+			})
 	})
 })
