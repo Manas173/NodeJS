@@ -143,7 +143,6 @@ describe('Testing delete route',(req,res)=>{
 })
 
 describe('Testing PATCH /todos',()=>{
-	console.log(todos[1]._id);
 	it('Testing first /todos update',(done)=>{
 		request(app)
 			.patch(`/todos/${todos[0]._id}`)
@@ -154,6 +153,7 @@ describe('Testing PATCH /todos',()=>{
 			.expect(200)
 			.expect((res)=>{
 				expect(res.body.response.text).toBe('This is a test update');
+				expect(res.body.response.completedAt).toBeA('number');
 			})
 			.end((err,res)=>{
 				if(err)
