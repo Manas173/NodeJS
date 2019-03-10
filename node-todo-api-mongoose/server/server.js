@@ -54,16 +54,30 @@ app.get('/todo',(req,res)=>{
 	})
 })
 
-app.post('/user',(req,res)=>{
+// app.post('/user',(req,res)=>{
+// 	var obj = new Users({
+// 		email: req.body.email,
+// 		name: req.body.name
+// 	})
+// 	obj.save().then((response)=>{
+// 		res.send('Saved user');
+// 	},(err)=>{
+// 		res.status(400).send(err);
+// 	})
+// })
+
+app.post('/users',(req,res)=>{
+	var body = _.pick(req.body,['email','password']);
 	var obj = new Users({
-		email: req.body.email,
-		name: req.body.name
-	})
+		email: body.email,
+		password: body.password
+	});
+
 	obj.save().then((response)=>{
 		res.send('Saved user');
 	},(err)=>{
-		res.status(400).send(err);
-	})
+		res.status(400).send();
+	});
 })
 
 app.delete('/todos/:id',(req,res)=>{
