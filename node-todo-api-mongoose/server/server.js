@@ -2,13 +2,13 @@ require('./../config/config');
 
 const port = process.env.PORT;
 
-
 var {mongoose} = require('../mongoose.js');
 var express = require('express');
 var bodyParser = require('body-parser');
 var {Todo} = require('../models/Todo.js');
 var {Users} = require('../models/Users.js');
 var {ObjectId} = require('mongodb');
+var {authenticate} = require('./authentication/authenticate');
 const _ = require('lodash');
 
 var app = express();
@@ -55,6 +55,10 @@ app.get('/todo',(req,res)=>{
 	})
 })
 
+app.get('/users/me',authenticate,(req,res)=>{
+	res.send(req.user);
+})
+
 // app.post('/user',(req,res)=>{
 // 	var obj = new Users({
 // 		email: req.body.email,
@@ -77,7 +81,7 @@ app.post('/users',(req,res)=>{
 		res.header('x-auth',token).send(obj);
 	}).catch((e)=>{
 		res.status(400).send(e);
-	});
+	})
 })
 
 app.delete('/todos/:id',(req,res)=>{
