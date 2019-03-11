@@ -2,6 +2,7 @@ require('./../config/config');
 
 const port = process.env.PORT;
 
+
 var {mongoose} = require('../mongoose.js');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -68,15 +69,14 @@ app.get('/todo',(req,res)=>{
 
 app.post('/users',(req,res)=>{
 	var body = _.pick(req.body,['email','password']);
-	var obj = new Users({
-		email: body.email,
-		password: body.password
-	});
+	var obj = new Users(body);
 
-	obj.save().then((response)=>{
-		res.send('Saved user');
-	},(err)=>{
-		res.status(400).send();
+	obj.save().then(()=>{
+		return obj.generateAuthToken();
+	}).then((token)=>{
+		res.header('x-auth',token).send(obj);
+	}).catch((e)=>{
+		res.status(400).send(e);
 	});
 })
 
