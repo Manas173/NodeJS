@@ -1,18 +1,38 @@
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
-var data = {
-	id: 4
-};
+var password = 'abc123';
 
-var token = jwt.sign(data,'itsthesecret');
+bcrypt.genSalt(10,(err,salt) => {
+	bcrypt.hash(password,salt,(err,hash) => {
+		console.log(salt);
+		console.log(hash);
+	})
+})
 
-var decode = jwt.verify(token,'itsthesecret');
-console.log(decode);
+var hashedPassword = '$2a$10$YWKy.dZO/aEjkE1M5bUtHeqOB0KZmNmMM0YgQHfHmLn.xPbnvqKL.';
 
-if(decode.id === data.id)
-	console.log('Verified');
-else
-	console.log('Not Verified Do Not Trust');
+bcrypt.compare(password,hashedPassword,(err,res)=>{
+	if(err)
+		return console.log(err);
+	console.log(res);
+})
+
+
+// const jwt = require('jsonwebtoken');
+
+// var data = {
+// 	id: 4
+// };
+
+// var token = jwt.sign(data,'itsthesecret');
+
+// var decode = jwt.verify(token,'itsthesecret');
+// console.log(decode);
+
+// if(decode.id === data.id)
+// 	console.log('Verified');
+// else
+// 	console.log('Not Verified Do Not Trust');
 
 // const {SHA256} = require('crypto-js');
 
