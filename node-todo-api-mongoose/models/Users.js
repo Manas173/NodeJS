@@ -4,7 +4,6 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var _ = require('lodash');
 
-
 var UserSchema = new mongoose.Schema({
 	email:{
 		unique: true,
