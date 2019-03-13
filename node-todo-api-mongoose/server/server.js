@@ -9,6 +9,8 @@ var {Todo} = require('../models/Todo.js');
 var {Users} = require('../models/Users.js');
 var {ObjectId} = require('mongodb');
 var {authenticate} = require('./authentication/authenticate');
+const bcrypt = require('bcryptjs');
+
 const _ = require('lodash');
 
 var app = express();
@@ -81,6 +83,23 @@ app.post('/users',(req,res)=>{
 		res.header('x-auth',token).send(obj);
 	}).catch((e)=>{
 		res.status(400).send(e);
+	})
+})
+
+app.post('/users/login',(req,res) => {
+	if(!req)
+		res.status(404).send('Invalid request');
+	Users.findOne({email: req.body.email}).then((resp) => {
+		bcrypt.compare(req.body.password,resp.password,(error,response) => {
+			if(error)
+				console.log(error);
+			if(response === true)
+				res.send({message: 'Authentication completed successfully', email: req.body.email});
+			else
+				res.status(400).send({message: 'Authentication failed ID or password did not match', email: req.body.email})
+		})
+	}).catch((e) => {
+		res.status(404).send({message: 'Authentication failed ID or password did not match', email: req.body.email})
 	})
 })
 
