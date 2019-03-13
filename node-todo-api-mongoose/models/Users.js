@@ -66,6 +66,25 @@ UserSchema.pre('save',function(next){
 	}
 })
 
+//creating model method findByCredentials
+
+UserSchema.statics.findByCredentials = function(email,password) {
+	var Users = this;
+	return Users.findOne({email}).then((res) => {
+		if(!res)
+			return Promise.reject();
+		return new Promise((resolve,reject) => {
+			bcrypt.compare(password,res.password,(e,r) => {
+				if(e)
+					reject();
+				if(r === false)
+					reject();
+				resolve(res);
+			})
+		})
+	})
+}
+
 UserSchema.methods.generateAuthToken = function() {
 	var user = this;
 	var access = 'auth';
