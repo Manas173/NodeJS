@@ -129,6 +129,16 @@ app.delete('/todos/:id',(req,res)=>{
 	})
 })
 
+
+app.delete('/users/me/token',authenticate,(req,res) => {
+	var token = req.header('x-auth');
+	req.user.removeToken(token).then(() => {
+		res.status(200).send();
+	},() => {
+		res.status(400).send();
+	})
+})
+
 app.patch('/todos/:id',(req,res)=>{
 	var id = req.params.id;
 	var body = _.pick(req.body,['text','completed']);
