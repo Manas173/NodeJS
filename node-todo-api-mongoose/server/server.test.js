@@ -316,3 +316,24 @@ describe('TESTING loggingIn',() => {
 			})
 	})
 })
+
+describe('TESTING logging out',() => {
+	it('logging out users using token',(done) => {
+		request(app)
+			.delete('/users/me/token')
+			.set('x-auth',users[0].tokens[0].token)
+			.expect(200)
+			.end((e) => {
+				if(e){
+					return done(e);
+				}
+				Users.findById(users[0]._id).then((res) => {
+					expect(res.tokens.length).toBe(0);
+				}).catch((e) => done(e));
+				Users.findByToken(users[0].tokens[0].token).then((res) => {
+					expect(res).toEqual(null);
+					done();
+				}).catch((e) => done(e));
+			})
+	})
+})
