@@ -325,7 +325,7 @@ describe('TESTING logging out',() => {
 			.expect(200)
 			.end((e) => {
 				if(e){
-					return done(e);
+					done(e);
 				}
 				Users.findById(users[0]._id).then((res) => {
 					expect(res.tokens.length).toBe(0);
