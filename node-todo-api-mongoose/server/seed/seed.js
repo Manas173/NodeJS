@@ -10,13 +10,29 @@ var users = [{
 	password: 'passwordForFirstUser',
 	tokens: [{
 		access: 'auth',
-		token: jwt.sign({_id: userOneId, access: 'auth'},'abc123').toString()	
+		token: jwt.sign({_id: userOneId, access: 'auth'},process.env.JWT_SECRET).toString()	
 	}]
 },{
 	_id: userTwoId,
 	email: 'trail2user@gmail.com',
-	password: 'passwordForSecondUser'
+	password: 'passwordForSecondUser',
+	tokens: [{
+		access: 'auth',
+		token: jwt.sign({_id: userTwoId , access: 'auth'},process.env.JWT_SECRET).toString()	
+	}]
 }];
+
+var todos = [{
+	_id: new ObjectID(),
+	text: 'This is one test',
+	_creator: userOneId
+},{
+	_id: new ObjectID(),
+	text: 'This is a test 123',
+	completed : true,
+	completedAt: null,
+	_creator: userTwoId
+}]
 
 var populateUser = (done) => {
 	Users.remove({}).then(() => {
@@ -28,5 +44,6 @@ var populateUser = (done) => {
 
 module.exports = {
 	users,
-	populateUser
+	populateUser,
+	todos
 }
