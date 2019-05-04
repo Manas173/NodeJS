@@ -1,0 +1,177 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'expect@1.20.2',
+1 verbose cli   'mocha@3.0.2',
+1 verbose cli   '--save-dev' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData expect@1.20.2
+8 silly fetchPackageMetaData mocha@3.0.2
+9 silly fetchNamedPackageData expect
+10 silly mapToRegistry name expect
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry uri https://registry.npmjs.org/expect
+14 silly fetchNamedPackageData mocha
+15 silly mapToRegistry name mocha
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry uri https://registry.npmjs.org/mocha
+19 verbose request uri https://registry.npmjs.org/expect
+20 verbose request no auth needed
+21 info attempt registry request try #1 at 10:25:38 PM
+22 verbose request id 66538cbcb2ec083f
+23 verbose etag W/"857cc7cac17fe9cfda5e6755b17febe6"
+24 verbose lastModified Thu, 04 Apr 2019 01:18:57 GMT
+25 http request GET https://registry.npmjs.org/expect
+26 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+27 verbose request uri https://registry.npmjs.org/mocha
+28 verbose request no auth needed
+29 info attempt registry request try #1 at 10:25:38 PM
+30 verbose etag W/"5dbd00c711425f35a56effdb81eadb84"
+31 verbose lastModified Thu, 18 Apr 2019 18:31:44 GMT
+32 http request GET https://registry.npmjs.org/mocha
+33 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+34 info attempt registry request try #2 at 10:25:48 PM
+35 verbose etag W/"857cc7cac17fe9cfda5e6755b17febe6"
+36 verbose lastModified Thu, 04 Apr 2019 01:18:57 GMT
+37 http request GET https://registry.npmjs.org/expect
+38 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+39 info attempt registry request try #2 at 10:25:48 PM
+40 verbose etag W/"5dbd00c711425f35a56effdb81eadb84"
+41 verbose lastModified Thu, 18 Apr 2019 18:31:44 GMT
+42 http request GET https://registry.npmjs.org/mocha
+43 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+44 info attempt registry request try #3 at 10:26:48 PM
+45 verbose etag W/"857cc7cac17fe9cfda5e6755b17febe6"
+46 verbose lastModified Thu, 04 Apr 2019 01:18:57 GMT
+47 http request GET https://registry.npmjs.org/expect
+48 silly get cb [ 304, undefined ]
+49 verbose etag https://registry.npmjs.org/expect from cache
+50 verbose get saving expect to /home/manas/.npm/registry.npmjs.org/expect/.cache.json
+51 info attempt registry request try #3 at 10:26:48 PM
+52 verbose etag W/"5dbd00c711425f35a56effdb81eadb84"
+53 verbose lastModified Thu, 18 Apr 2019 18:31:44 GMT
+54 http request GET https://registry.npmjs.org/mocha
+55 silly get cb [ 304, undefined ]
+56 verbose etag https://registry.npmjs.org/mocha from cache
+57 verbose get saving mocha to /home/manas/.npm/registry.npmjs.org/mocha/.cache.json
+58 silly install normalizeTree
+59 silly loadCurrentTree Finishing
+60 silly loadIdealTree Starting
+61 silly install loadIdealTree
+62 silly cloneCurrentTree Starting
+63 silly install cloneCurrentTreeToIdealTree
+64 silly cloneCurrentTree Finishing
+65 silly loadShrinkwrap Starting
+66 silly install loadShrinkwrap
+67 silly loadShrinkwrap Finishing
+68 silly loadAllDepsIntoIdealTree Starting
+69 silly install loadAllDepsIntoIdealTree
+70 silly resolveWithNewModule expect@1.20.2 checking installable status
+71 silly cache add args [ 'expect@1.20.2', null ]
+72 verbose cache add spec expect@1.20.2
+73 silly resolveWithNewModule mocha@3.0.2 checking installable status
+74 silly cache add args [ 'mocha@3.0.2', null ]
+75 verbose cache add spec mocha@3.0.2
+76 silly cache add parsed spec Result {
+76 silly cache add   raw: 'expect@1.20.2',
+76 silly cache add   scope: null,
+76 silly cache add   name: 'expect',
+76 silly cache add   rawSpec: '1.20.2',
+76 silly cache add   spec: '1.20.2',
+76 silly cache add   type: 'version' }
+77 silly addNamed expect@1.20.2
+78 verbose addNamed "1.20.2" is a plain semver version for expect
+79 silly mapToRegistry name expect
+80 silly mapToRegistry using default registry
+81 silly mapToRegistry registry https://registry.npmjs.org/
+82 silly mapToRegistry uri https://registry.npmjs.org/expect
+83 verbose addNameVersion registry:https://registry.npmjs.org/expect not in flight; fetching
+84 silly cache add parsed spec Result {
+84 silly cache add   raw: 'mocha@3.0.2',
+84 silly cache add   scope: null,
+84 silly cache add   name: 'mocha',
+84 silly cache add   rawSpec: '3.0.2',
+84 silly cache add   spec: '3.0.2',
+84 silly cache add   type: 'version' }
+85 silly addNamed mocha@3.0.2
+86 verbose addNamed "3.0.2" is a plain semver version for mocha
+87 silly mapToRegistry name mocha
+88 silly mapToRegistry using default registry
+89 silly mapToRegistry registry https://registry.npmjs.org/
+90 silly mapToRegistry uri https://registry.npmjs.org/mocha
+91 verbose addNameVersion registry:https://registry.npmjs.org/mocha not in flight; fetching
+92 verbose get https://registry.npmjs.org/expect not expired, no request
+93 verbose get https://registry.npmjs.org/mocha not expired, no request
+94 silly mapToRegistry name mocha
+95 silly mapToRegistry using default registry
+96 silly mapToRegistry registry https://registry.npmjs.org/
+97 silly mapToRegistry uri https://registry.npmjs.org/mocha
+98 verbose addRemoteTarball https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz not in flight; adding
+99 verbose addRemoteTarball [ 'https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz',
+99 verbose addRemoteTarball   '63a97f3e18f4d3e659d47a617677d089874557f0' ]
+100 silly cache afterAdd expect@1.20.2
+101 verbose afterAdd /home/manas/.npm/expect/1.20.2/package/package.json not in flight; writing
+102 info retry fetch attempt 1 at 10:26:48 PM
+103 info attempt registry request try #1 at 10:26:48 PM
+104 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+105 verbose afterAdd /home/manas/.npm/expect/1.20.2/package/package.json written
+106 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+107 info attempt registry request try #2 at 10:26:58 PM
+108 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+109 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+110 info attempt registry request try #3 at 10:27:58 PM
+111 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+112 error fetch failed https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+113 warn retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+114 info retry fetch attempt 2 at 10:28:08 PM
+115 info attempt registry request try #1 at 10:28:08 PM
+116 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+117 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+118 info attempt registry request try #2 at 10:28:18 PM
+119 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+120 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+121 info attempt registry request try #3 at 10:29:18 PM
+122 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+123 error fetch failed https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+124 warn retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+125 info retry fetch attempt 3 at 10:30:18 PM
+126 info attempt registry request try #1 at 10:30:18 PM
+127 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+128 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+129 info attempt registry request try #2 at 10:30:28 PM
+130 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+131 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+132 info attempt registry request try #3 at 10:31:28 PM
+133 http fetch GET https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+134 error fetch failed https://registry.npmjs.org/mocha/-/mocha-3.0.2.tgz
+135 silly rollbackFailedOptional Starting
+136 silly rollbackFailedOptional Finishing
+137 silly runTopLevelLifecycles Starting
+138 silly runTopLevelLifecycles Finishing
+139 silly install printInstalled
+140 verbose stack Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+140 verbose stack     at errnoException (dns.js:50:10)
+140 verbose stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+141 verbose cwd /home/manas/code/NodeJS/chatApp
+142 error Linux 4.15.0-29-generic
+143 error argv "/usr/bin/node" "/usr/bin/npm" "install" "expect@1.20.2" "mocha@3.0.2" "--save-dev"
+144 error node v8.10.0
+145 error npm  v3.5.2
+146 error code ENOTFOUND
+147 error errno ENOTFOUND
+148 error syscall getaddrinfo
+149 error network getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+150 error network This is most likely not a problem with npm itself
+150 error network and is related to network connectivity.
+150 error network In most cases you are behind a proxy or have bad network settings.
+150 error network
+150 error network If you are behind a proxy, please make sure that the
+150 error network 'proxy' config is set properly.  See: 'npm help config'
+151 verbose exit [ 1, true ]
