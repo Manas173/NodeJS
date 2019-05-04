@@ -1,4 +1,3 @@
-//To deploy in heroku add start in scripts and engines in the outermost { }
 {
   "name": "code",
   "version": "1.0.0",
