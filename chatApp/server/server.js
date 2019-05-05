@@ -7,6 +7,7 @@ var PORT = process.env.PORT || 3000;
 var http = require('http');
 var server = http.createServer(app);
 var io = socketIO(server);
+var {generateMessage,generateLocationMessage} = require('./utils/message');
 
 app.use(express.static(publicPath));
 
@@ -23,6 +24,10 @@ io.on('connection',(socket) => {
 		from: 'Admin (Manas)',
 		text: 'New user joined',
 		createdAt: new Date().getTime()
+	})
+
+	socket.on('createLocationMessage',(coords)=>{
+		io.emit('newLocationMessage',generateLocationMessage('Admin',`${coords.latitude},${coords.longitude}`))
 	})
 
 	socket.on('createEmail',(email) => {
