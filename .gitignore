@@ -2,3 +2,4 @@ node_modules
 Node-web-server/node_modules
 node-tests/node_modules
 node-todo-api-mongoose/node_modules
+chatApp/node_modules
