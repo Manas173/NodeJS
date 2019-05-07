@@ -32,9 +32,9 @@ locationButton.on('click',function(){
 })
 
 socket.on('newLocationMessage',function(message){
-    var li = jQuery('<li> </li>');
+    var li = jQuery('<li></li>');
     var a = jQuery('<a target="_blank">My current location</a>');
-    li.text(`${message.from}:`);
+    li.text(`${message.from}: `)
     a.attr('href',message.url);
     li.append(a);
     jQuery('#messages').append(li);
@@ -42,9 +42,11 @@ socket.on('newLocationMessage',function(message){
 
 jQuery('#message-form').on('submit',function(e){
     e.preventDefault();
+    var text = jQuery('[name=message').val();
+    $('#message-form').children('#message-input').val('');
     socket.emit('createMessage',{
         from:'User',
-        text:jQuery('[name=message]').val()
+        text
     },function(){
 
     })
