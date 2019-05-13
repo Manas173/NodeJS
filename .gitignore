@@ -1,3 +1,4 @@
 node_modules
 /node-todo-api-mongoose/node_modules
 /chatApp/node_modules
+/uploadToDB/mongo-data

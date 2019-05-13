@@ -1,0 +1,16 @@
+{
+  "name": "uploadtodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manas Ranjan Swain",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^39.2.0",
+    "gridform": "^0.1.7",
+    "mongodb": "^3.2.4"
+  }
+}

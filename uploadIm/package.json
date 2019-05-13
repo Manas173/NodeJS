@@ -1,0 +1,18 @@
+{
+  "name": "uploadimages",
+  "version": "1.0.0",
+  "description": "code to upload images",
+  "main": "index.js",
+  "dependencies": {
+    "create-react-app": "^3.0.1",
+    "express": "^4.16.4",
+    "formidable": "^1.2.1",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manas Ranjan Swain",
+  "license": "ISC"
+}
