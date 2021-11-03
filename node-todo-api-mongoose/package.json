@@ -23,6 +23,6 @@
     "jsonwebtoken": "^8.5.0",
     "lodash": "^4.15.0",
     "npm": "^6.9.0",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   }
 }
